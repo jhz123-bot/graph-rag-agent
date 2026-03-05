@@ -1,0 +1,43 @@
+domain: legal
+version: 1
+entity_types:
+  - Case
+  - Fact
+  - Act
+  - MentalState
+  - Result
+  - Charge
+  - LawArticle
+  - Evidence
+  - Party
+relationship_types:
+  - HAS_FACT
+  - HAS_ACT
+  - HAS_MENTAL_STATE
+  - LEADS_TO
+  - SUPPORTED_BY
+  - MATCHES_ELEMENT
+  - APPLIES_ARTICLE
+constraints:
+  relation_endpoints:
+    HAS_FACT:
+      source: [Case]
+      target: [Fact]
+    HAS_ACT:
+      source: [Fact, Party]
+      target: [Act]
+    HAS_MENTAL_STATE:
+      source: [Act, Party]
+      target: [MentalState]
+    LEADS_TO:
+      source: [Act, MentalState]
+      target: [Result, Charge]
+    SUPPORTED_BY:
+      source: [Fact, Act, Charge]
+      target: [Evidence]
+    MATCHES_ELEMENT:
+      source: [Fact, Act, MentalState]
+      target: [Charge]
+    APPLIES_ARTICLE:
+      source: [Charge]
+      target: [LawArticle]

@@ -245,6 +245,31 @@ LANGSMITH_API_KEY = "xxx"
 LANGSMITH_PROJECT = "xxx"
 ```
 
+### Legal GraphRAG / 小模型抽取（新增）
+
+```env
+# 启用法律领域 schema/prompt
+ENABLE_LEGAL_DOMAIN = true
+LEGAL_DOMAIN_DIR = './domains/legal'
+
+# 小模型抽取开关（CPU demo 建议配合 mock）
+ENABLE_LOCAL_EXTRACTOR = false
+LOCAL_EXTRACTOR_MODEL_NAME = 'Qwen/Qwen2.5-3B-Instruct'
+LOCAL_EXTRACTOR_DEVICE = 'cpu'
+LOCAL_EXTRACTOR_MAX_NEW_TOKENS = 512
+LOCAL_EXTRACTOR_USE_MOCK = true
+
+# 抽取失败时启用 fallback
+ENABLE_EXTRACT_FALLBACK = true
+
+# Legal GraphRAG 默认 embedding
+LEGAL_EMBEDDING_MODEL_NAME = 'BAAI/bge-large-zh-v1.5'
+
+# Ollama 兼容 OpenAI 接口示例
+OPENAI_BASE_URL = 'http://localhost:11434/v1'
+OPENAI_LLM_MODEL = 'deepseek-r1:8b'
+```
+
 ### 配置模板获取
 
 完整配置模板请参考项目根目录的 `.env.example` 文件，可直接复制重命名为 `.env` 后修改。
